@@ -30,6 +30,7 @@ import javax.crypto.NoSuchPaddingException;
  */
 public class GestorRecuperacion implements RecuperacionInterface{
     private Persistence persistencia;
+    private final String myIPS = "25.106.247.240";
     private final String[] IPSs = {"25.106.234.226","25.106.234.84"};
     
     public GestorRecuperacion() throws NoSuchAlgorithmException, UnsupportedEncodingException{
@@ -43,6 +44,10 @@ public class GestorRecuperacion implements RecuperacionInterface{
     public void setPersistencia(Persistence persistencia) {
         this.persistencia = persistencia;
     }
+
+    public String getMyIPS() {
+        return myIPS;
+    } 
     
     public String distribuirPedidos(int vac1, int vac2, int vac3) throws RemoteException {
         String resultado;

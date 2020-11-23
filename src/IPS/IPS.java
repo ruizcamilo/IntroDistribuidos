@@ -21,7 +21,7 @@ public class IPS{
     
     public IPS(int num1, int num2, int num3)
     {
-      this.ip = "192.168.1.173";
+      this.ip = "25.106.234.226";
       this.puerto = 5555;
       this.totalVac1 = num1;
       this.totalVac2 = num2;
@@ -66,7 +66,5 @@ public class IPS{
 
     public void setPuerto(int puerto) {
         this.puerto = puerto;
-    }
-   
-        
+    }    
 }

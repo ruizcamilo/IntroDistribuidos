@@ -134,6 +134,7 @@ public class GestorControlConcurrencia implements GCCInterface{
     public void recoverServer(){
         Registry registry;
         try {
+            //IP GLOBAL
             registry = LocateRegistry.getRegistry("25.106.247.240", 5554);
             RecuperacionInterface globalInterface = (RecuperacionInterface) registry.lookup("Recuperacion");
             String parts[];
