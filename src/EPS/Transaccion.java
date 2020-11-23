@@ -32,7 +32,7 @@ public class Transaccion extends Thread{
     public void run(){
             try {    
                 Registry registry;
-                registry = LocateRegistry.getRegistry("127.0.0.1", 5554);
+                registry = LocateRegistry.getRegistry("25.106.247.240", 5554);
                 RecuperacionInterface globalInterface = (RecuperacionInterface) registry.lookup("Recuperacion");
                 result = globalInterface.distribuirPedidos(send.getCantVac1(), send.getCantVac2(), send.getCantVac3());
             } catch (RemoteException | NotBoundException ex) {

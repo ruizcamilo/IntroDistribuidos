@@ -12,7 +12,7 @@ public class IPS{
 
     public IPS()
     {
-      this.ip = "192.168.1.173";
+      this.ip = "25.106.234.226";
       this.puerto = 5555;
       this.totalVac1 = 500;
       this.totalVac2 = 500;

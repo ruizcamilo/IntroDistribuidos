@@ -30,7 +30,7 @@ import javax.crypto.NoSuchPaddingException;
  */
 public class GestorRecuperacion implements RecuperacionInterface{
     private Persistence persistencia;
-    private final String[] IPSs = {"127.0.0.1","192.168.1.173"};
+    private final String[] IPSs = {"25.106.234.226","25.106.234.84"};
     
     public GestorRecuperacion() throws NoSuchAlgorithmException, UnsupportedEncodingException{
         this.persistencia = new Persistence();

@@ -70,7 +70,7 @@ public class EPS implements EPSInterface {
     public boolean iniciarSesionEPS(String idEPS, String password) throws NoSuchAlgorithmException {
         Registry registry;
         try {
-            registry = LocateRegistry.getRegistry("127.0.0.1", 5554);
+            registry = LocateRegistry.getRegistry("25.106.247.240", 5554);
             RecuperacionInterface globalInterface = (RecuperacionInterface) registry.lookup("Recuperacion");
             System.out.println("SE FUE: "+idEPS+" "+encrypt.HashString(password));
             if(globalInterface.iniciarEPS(idEPS, encrypt.HashString(password)))

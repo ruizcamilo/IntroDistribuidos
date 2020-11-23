@@ -19,6 +19,7 @@ import IPS.GCCInterface;
 public class RecuperacionServer {
     public static void main(String[] args) throws Exception{
         try{
+            System.setProperty("java.rmi.server.hostname","25.106.247.240");
             Registry registry = LocateRegistry.createRegistry(5554);
             GestorRecuperacion miGR = new GestorRecuperacion();
             RecuperacionInterface stub = (RecuperacionInterface) UnicastRemoteObject.exportObject((Remote) miGR,0);
