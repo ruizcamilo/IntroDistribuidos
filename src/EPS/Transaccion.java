@@ -31,11 +31,14 @@ public class Transaccion extends Thread{
     @Override
     public void run(){
             try {    
+                long startTime = System.nanoTime();
                 Registry registry;
                 //IP GLOBAL
                 registry = LocateRegistry.getRegistry("25.106.247.240", 5554);
                 RecuperacionInterface globalInterface = (RecuperacionInterface) registry.lookup("Recuperacion");
                 result = globalInterface.distribuirPedidos(send.getCantVac1(), send.getCantVac2(), send.getCantVac3());
+                long elapsedTime = System.nanoTime() - startTime;
+                System.out.println("La transacción duro: "+elapsedTime+"ms");
             } catch (RemoteException | NotBoundException ex) {
                 Logger.getLogger(Transaccion.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -12,7 +12,7 @@ public class IPS{
 
     public IPS()
     {
-      this.ip = "25.106.234.226";
+      this.ip = "25.106.247.240";
       this.puerto = 5555;
       this.totalVac1 = 500;
       this.totalVac2 = 500;
@@ -21,7 +21,7 @@ public class IPS{
     
     public IPS(int num1, int num2, int num3)
     {
-      this.ip = "25.106.234.226";
+      this.ip = "25.106.247.240";
       this.puerto = 5555;
       this.totalVac1 = num1;
       this.totalVac2 = num2;

@@ -39,24 +39,24 @@ public class GestorControlConcurrencia implements GCCInterface{
         cantVac1 = thisIPS.getTotalVac1();
         cantVac2 = thisIPS.getTotalVac2();
         cantVac3 = thisIPS.getTotalVac3();
-        tentativas = Collections.synchronizedList(new ArrayList<>());
+        tentativas = new ArrayList<>();
     }
     
     public String manejarPedido(int vac1, int vac2, int vac3) throws RemoteException{
         Date date = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
         IPS copia = new IPS(cantVac1,cantVac2,cantVac3);
         boolean w1 = false, w2 = false, w3 = false;
-        if(copia.getTotalVac1() > vac1 && vac1 != 0)
+        if(copia.getTotalVac1() >= vac1 && vac1 != 0)
         {
             w1 = true;
             copia.setTotalVac1(copia.getTotalVac1()-vac1);
         }
-        if(copia.getTotalVac2() > vac2 && vac2 != 0)
+        if(copia.getTotalVac2() >= vac2 && vac2 != 0)
         {
             w2 = true;
             copia.setTotalVac2(copia.getTotalVac2()-vac2);
         }
-        if(copia.getTotalVac3() > vac3 && vac3 != 0)
+        if(copia.getTotalVac3() >= vac3 && vac3 != 0)
         {
             w3 = true;
             copia.setTotalVac3(copia.getTotalVac3()-vac3);
@@ -74,7 +74,7 @@ public class GestorControlConcurrencia implements GCCInterface{
         }
     }
     
-    public boolean OptimistConcurrency(Tentativa trans){
+    public synchronized boolean OptimistConcurrency(Tentativa trans){
         boolean valida = true;
 	for (Tentativa Tv: tentativas)
         {

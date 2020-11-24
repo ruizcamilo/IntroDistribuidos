@@ -118,7 +118,6 @@ public class Persistence {
         boolean found = false;
         EncryptorAESFile fileEncrypterDecrypter = new EncryptorAESFile(secretKey, "AES/CBC/PKCS5Padding");
         String decryptedContent = fileEncrypterDecrypter.decrypt("IPS.txt");
-        System.out.println(decryptedContent);
         IPSs = decryptedContent.split(";");
         for(String ips: IPSs)
         {
@@ -161,6 +160,7 @@ public class Persistence {
                 newContent = newContent + ips + ";";
             }
         }
+        System.out.println(newContent);
         fileEncrypterDecrypter.encrypt(newContent, "IPS.txt");
     }
 }

@@ -31,7 +31,7 @@ import javax.crypto.NoSuchPaddingException;
 public class GestorRecuperacion implements RecuperacionInterface{
     private Persistence persistencia;
     private final String myIPS = "25.106.247.240";
-    private final String[] IPSs = {"25.106.234.226","25.106.234.84"};
+    private final String[] IPSs = {"25.106.234.226", "25.106.247.240", "25.106.234.84"};
     
     public GestorRecuperacion() throws NoSuchAlgorithmException, UnsupportedEncodingException{
         this.persistencia = new Persistence();
@@ -51,24 +51,29 @@ public class GestorRecuperacion implements RecuperacionInterface{
     
     public String distribuirPedidos(int vac1, int vac2, int vac3) throws RemoteException {
         String resultado;
+        String parcial = null;
         String[] cants;
         for(String ip:IPSs)
         {
+            System.out.println("Pedido enviado a: "+ip);
             resultado = mandarPedido(vac1,vac2,vac3,ip);
+            System.out.println("Con resultado: "+resultado);
             if(resultado != null)
             {
+                parcial = resultado;
                 cants = resultado.split(",", 3);
                 if(cants[0].equals("0") && cants[1].equals("0") && cants[2].equals("0"))
                 {
                     return resultado;
                 }else{
-                    vac1-=Integer.parseInt(cants[0]);
-                    vac2-=Integer.parseInt(cants[1]);
-                    vac3-=Integer.parseInt(cants[2]);
+                    System.out.println("PEDIDO REDIRIGIDO DE EPS: "+resultado);
+                    vac1=Integer.parseInt(cants[0]);
+                    vac2=Integer.parseInt(cants[1]);
+                    vac3=Integer.parseInt(cants[2]);
                 }
             }
         }
-        return null;
+        return parcial;
     }
     
     public String mandarPedido(int vac1, int vac2, int vac3, String IPaddress) throws RemoteException
