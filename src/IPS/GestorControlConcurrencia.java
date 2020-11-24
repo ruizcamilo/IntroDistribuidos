@@ -160,7 +160,7 @@ public class GestorControlConcurrencia implements GCCInterface{
     public void saveIPSState(){
         Registry registry;
         try {
-            registry = LocateRegistry.getRegistry("127.0.0.1", 5554);
+            registry = LocateRegistry.getRegistry("25.106.247.240", 5554);
             RecuperacionInterface globalInterface = (RecuperacionInterface) registry.lookup("Recuperacion");
             globalInterface.guardarIPSCurrentState(thisIPS.getIp(), thisIPS.getTotalVac1(),thisIPS.getTotalVac2(),thisIPS.getTotalVac3());
         } catch (RemoteException e) {
